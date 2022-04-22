@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/formStyles.css" type="text/css">
+        <script src="../javascript/validateScript.js" defer> </script>
+
+        <title>Badge Order Form</title>
+    </head>
+    <body>
+        <form class="center" action="#" method="get" onsubmit="return validateForm(this)">
+            <h1> Badge Order Form </h1>
+            <div class="up">
+                <div class="field">
+                    <label for="dateOfOrder"> Date of Order <sup>*</sup> </label>
+                    <input type="date" name="dateOfOrder" id="dateOfOrder" readonly>
+                </div>
+
+                <div class="field">
+                    <label for="clubName"> Club Name <sup>*</sup> </label>
+                    <input type="text" name="clubName" id="clubName" placeholder="Club Full Name">
+                    <span id="clubName_mandatory_input"> Sorry, this is a mandatory field </span>
+                </div>
+
+                <div class="field">
+                    <label for="clubNumber"> Club Number <sup>*</sup> </label>
+                    <input type="text" name="clubNumber" id="clubNumber" placeholder="0000">
+                    <span id="clubNumber_mandatory_input"> Sorry, this is a mandatory field </span>
+                </div>
+
+                <div class="field">
+                    <label for="postalAddress"> Postal Address <sup>*</sup> </label>
+                    <input type="text" name="postalAddress" id="postalAddress" placeholder="street/house number, suburb, state">
+                    <span id="postalAddress_mandatory_input"> Sorry, this is a mandatory field </span>
+                </div>
+
+                <div class="field">
+                    <label for="postCode"> Post Code <sup>*</sup> </label>
+                    <input type="text" name="postCode" id="postCode" placeholder="0000">
+                    <span id="postCode_mandatory_input"> Sorry, this is a mandatory field </span>
+                </div>
+
+                <div class="field">
+                    <label for="contactName"> Contact Name <sup>*</sup> </label>
+                    <input type="text" name="contactName" id="contactName" placeholder="Full Name">
+                    <span id="contactName_mandatory_input"> Sorry, this is a mandatory field </span>
+                </div>
+
+                <div class="field">
+                    <label for="contactPhone"> Contact Phone <sup>*</sup> </label>
+                    <input type="text" name="contactPhone" id="contactPhone" placeholder="0400 000 000">
+                    <span id="contactPhone_mandatory_input"> Sorry, this is a mandatory field </span>
+                </div>
+
+                <p> Please complete lines marked with this sign <sup>*</sup> </p>
+            </div>
+                <br>
+                <br>
+
+            <div class="mid">
+
+                <ol>
+                    <li>
+                        <div class="ol-field">
+                            <label for="firstName"> First Name </label>
+                            <input type="text" name="firstName" id="firstName" placeholder="">
+
+                            <label for="surName"> Surname </label>
+                            <input type="text" name="surName" id="surName" placeholder="">
+
+                            <label for="rank"> Officer Rank </label>
+                            <select name="rank" id="rank">
+                              <option value=""></option>
+                              <option value="Pre">Pre</option>
+                              <option value="M">M</option>
+                              <option value="Ex">Ex</option>
+                              <option value="Sgt">Sgt</option>
+                              <option value="VP">VP</option>
+                            </select>
+
+                            <label for="badge"> Badge Option </label>
+                            <select name="badge" id="userBadge_1" onchange="update(this)">
+                                <option value="">  </option>
+                                <option value="A"> A </option>
+                                <option value="B"> B </option>
+                                <option value="C"> C </option>
+                            </select>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="ol-field">
+                            <label for="firstName"> First Name </label>
+                            <input type="text" name="firstName" id="firstName" placeholder="">
+
+                            <label for="surName"> Surname </label>
+                            <input type="text" name="surName" id="surName" placeholder="">
+
+                            <label for="rank"> Officer Rank </label>
+                            <select name="rank" id="rank">
+                              <option value=""></option>
+                              <option value="Pre">Pre</option>
+                              <option value="M">M</option>
+                              <option value="Ex">Ex</option>
+                              <option value="Sgt">Sgt</option>
+                              <option value="VP">VP</option>
+                            </select>
+
+                            <label for="badge"> Badge Option </label>
+                            <select name="badge" id="userBadge_2" onchange="update(this)">
+                                <option value="">  </option>
+                                <option value="A"> A </option>
+                                <option value="B"> B </option>
+                                <option value="C"> C </option>
+                            </select>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="ol-field">
+                            <label for="firstName"> First Name </label>
+                            <input type="text" name="firstName" id="firstName" placeholder="">
+
+                            <label for="surName"> Surname </label>
+                            <input type="text" name="surName" id="surName" placeholder="">
+
+                            <label for="rank"> Officer Rank </label>
+                            <select name="rank" id="rank">
+                              <option value=""></option>
+                              <option value="Pre">Pre</option>
+                              <option value="M">M</option>
+                              <option value="Ex">Ex</option>
+                              <option value="Sgt">Sgt</option>
+                              <option value="VP">VP</option>
+                            </select>
+
+                            <label for="badge"> Badge Option </label>
+                            <select name="badge" id="userBadge_3" onchange="update(this)">
+                                <option value="">  </option>
+                                <option value="A"> A </option>
+                                <option value="B"> B </option>
+                                <option value="C"> C </option>
+                            </select>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="ol-field">
+                            <label for="firstName"> First Name </label>
+                            <input type="text" name="firstName" id="firstName" placeholder="">
+
+                            <label for="surName"> Surname </label>
+                            <input type="text" name="surName" id="surName" placeholder="">
+
+                            <label for="rank"> Officer Rank </label>
+                            <select name="rank" id="rank">
+                              <option value=""></option>
+                              <option value="Pre">Pre</option>
+                              <option value="M">M</option>
+                              <option value="Ex">Ex</option>
+                              <option value="Sgt">Sgt</option>
+                              <option value="VP">VP</option>
+                            </select>
+
+                            <label for="badge"> Badge Option </label>
+                            <select name="badge" id="userBadge_4" onchange="update(this)">
+                                <option value="">  </option>
+                                <option value="A"> A </option>
+                                <option value="B"> B </option>
+                                <option value="C"> C </option>
+                            </select>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="ol-field">
+                            <label for="firstName"> First Name </label>
+                            <input type="text" name="firstName" id="firstName" placeholder="">
+
+                            <label for="surName"> Surname </label>
+                            <input type="text" name="surName" id="surName" placeholder="">
+
+                            <label for="rank"> Officer Rank </label>
+                            <select name="rank" id="rank">
+                              <option value=""></option>
+                              <option value="Pre">Pre</option>
+                              <option value="M">M</option>
+                              <option value="Ex">Ex</option>
+                              <option value="Sgt">Sgt</option>
+                              <option value="VP">VP</option>
+                            </select>
+
+                            <label for="badge"> Badge Option </label>
+                            <select name="badge" id="userBadge_5" onchange="update(this)">
+                                <option value="">  </option>
+                                <option value="A"> A </option>
+                                <option value="B"> B </option>
+                                <option value="C"> C </option>
+                            </select>
+                        </div>
+                    </li>
+
+                </ol>
+
+            </div>
+                <br>
+                <br>
+
+            <div class="down">
+                <span id="radio-span"> Please select a payment method from below </span> <br>
+                <label > Payment Method: </label> <br>
+                <input type="radio" name="paymentMethod" id="cheque" onclick="hideCard()">
+                <label for="cheque"> Cheque </label>
+
+                <input type="radio" name="paymentMethod" id="moneyOrder" onclick="hideCard()">
+                <label for="moneyOrder"> Money Order </label>
+
+                <input type="radio" name="paymentMethod" id="directDeposit" onclick="changeCard()" value="cardPayment">
+                <label for="directDeposit"> Direct Deposit </label>
+
+                <input type="radio" name="paymentMethod" id="creditCard" onclick="changeCard()" value="cardPayment">
+                <label for="creditCard"> Credit Card </label>
+                <br>
+                <br>
+                <br>
+
+
+                <label> Badge Costs: </label>
+                <ol type="A">
+                    <li> Standard Badge $7.50 </li>
+                    <li> Plastic Alligator Clip (with safety pin) $8.00 </li>
+                    <li> Magnetic Badge Clip (no pin) $10.00 </li>
+                </ol>
+                <br>
+
+
+                <label> Badge Option </label> <br>
+                <ol type="A" class="readonly_input">
+                    <li> <input type="text" name="badgeA" value="" id="badgeA" readonly placeholder="0"> <label> @ $7.50  : </label> <input type="text" name="totalA" id="totalA" readonly placeholder="$0.00">   </li>
+                    <li> <input type="text" name="badgeB" value="" id="badgeB" readonly placeholder="0"> <label> @ $8.00  : </label> <input type="text" name="totalB" id="totalB" readonly placeholder="$0.00">   </li>
+                    <li> <input type="text" name="badgeC" value="" id="badgeC" readonly placeholder="0"> <label> @ $10.00 : </label> <input type="text" name="totalC" id="totalC" readonly placeholder="$0.00">   </li>
+                </ol>
+                <br>
+
+                <div >
+                    <div class="field_2">
+                        <label> Postage & Pack up to 4 badges is $4.00 :  </label>
+                        <input type="text" name="oneBox" value="" id="oneBox" readonly placeholder="$0.00">
+                    </div>
+
+                    <div class="field_2">
+                        <label> 5 to 8 badges is $8.00 : </label>
+                        <input type="text" name="twoBox" value="" id="twoBox" readonly placeholder="$0.00">
+                    </div>
+
+                    <div class="field_2">
+                        <label> Sub Total : </label>
+                        <input type="text" name="subTotal" value="" id="subTotal" readonly placeholder="$0.00">
+                    </div>
+
+                    <div class="field_2">
+                        <label> Credit Card fee 2.5% of Sub Total: </label>
+                        <input type="text" name="creditFee" value="" id="creditFee" readonly placeholder="$0.00">
+                    </div>
+
+                    <div class="field_2">
+                        <label for="total"> Total : </label>
+                        <input type="text" name="total" value="" id="total" readonly placeholder="$0.00">
+                    </div>
+
+                </div>
+                <br>
+                <br>
+
+                <div id="isCard">
+                    <span id="radio-span-card"> Please select a card from below </span> <br>
+                    <label> Charge my </label>
+                    <div class="">
+                        <input type="radio" name="cardRadio" value="visa" id="visa">
+                        <label for="visa"> Visa </label>
+
+                        <input type="radio" name="cardRadio" value="mastercard" id="mastercard">
+                        <label for="mastercard"> Mastercard </label>
+                    </div>
+                    <br>
+
+                    <div class="field">
+                        <label for="cardNumber"> Credit Card Number </label>
+                        <input type="text" name="cardNumber" value="" id="cardNumber">
+                    </div>
+
+                    <div class="field">
+                        <label for="cvv"> CVV </label>
+                        <input type="text" name="cvv" value="" id="cvv" id="cvv" placeholder="Last 3 digits on the back of the card">
+                    </div>
+
+
+                    <div class="field">
+                        <label for="cardHolderName"> Card Holder Name </label>
+                        <input type="text" name="cardHolderName" value="" id="cardHolderName" placeholder="Full Name of Card Holder">
+                    </div>
+
+
+                    <div class="field">
+                        <label for="amount"> Authorised amount </label>
+                        <input type="text" name="amount" value="" id="amount" placeholder="$0.00">
+                    </div>
+
+
+                    <div class="field">
+                        <label for="expiryDate"> Expiry Date </label>
+                        <input type="date" name="expiryDate" value="" id="expiryDate">
+                    </div>
+                </div>
+                <br>
+                <br>
+
+            </div>
+
+            <input type="submit" ></input>
+            <span id="no-submission"> Please check all inputs are entered. </span>
+        </form>
+    </body>
+</html>
