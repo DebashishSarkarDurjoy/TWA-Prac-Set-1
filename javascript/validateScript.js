@@ -1,4 +1,6 @@
-
+// Student ID: 19902470
+// Name: 19902470
+// Class Time: Thursday 9:00 AM
 
 document.getElementById("dateOfOrder").valueAsDate = new Date();
 
@@ -50,6 +52,11 @@ function validateForm(form) {
         valid = false;
         console.log(form.cardRadio.value.length);
         document.getElementById("radio-span-card").style.display = "inline-block";
+    }
+    if (form.paymentMethod.value == "cardPayment" && form.cardRadio.value.length) {
+        cardValidation(form.cardNumber, "cardNumber_mandatory", "cardNumber_16_digits");
+        cardValidation(form.cardNumber, "cardCVV_mandatory", "cvv_3_digits");
+        cardValidation(form.cardNumber, "cardHolderName_mandatory", "full_name_span");
     }
 
 
@@ -149,7 +156,7 @@ function removeWarning(element, id) {
     // validation for Contact Name
     if (id == "contactName_mandatory_input") {
         // regex obtained from: https://stackoverflow.com/questions/46664142/js-regular-expression-for-first-name (answered by Wiktor Stribiżew)
-        let regEx = /^(?=.{1,50}$)[a-z]+(?:['_.\s][a-z]+)*$/ ;
+        let regEx = /^(?=.{1,50}$)[a-z]+(?:['_.\s][a-z]+)*$/i ;
         showWarning(element, "contactName_mandatory_input", "contactName_fullName", regEx);
 
     }
