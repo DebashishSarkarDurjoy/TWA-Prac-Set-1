@@ -18,38 +18,49 @@
 
                 <div class="field">
                     <label for="clubName"> Club Name <sup>*</sup> </label>
-                    <input type="text" name="clubName" id="clubName" placeholder="Club Full Name">
+                    <input type="text" name="clubName" id="clubName" onblur="removeWarning(this, 'clubName_mandatory_input')" placeholder="Full Name of Club">
                     <span id="clubName_mandatory_input"> Sorry, this is a mandatory field </span>
+                    <span id="clubName_alphabets_only">
+                        <ol>
+                            <li> Please enter alphabets only </li>
+                            <li> Should be less than 30 characters </li>
+                        </ol>
+                    </span>
                 </div>
 
                 <div class="field">
                     <label for="clubNumber"> Club Number <sup>*</sup> </label>
-                    <input type="text" name="clubNumber" id="clubNumber" placeholder="0000">
+                    <input type="text" name="clubNumber" id="clubNumber" placeholder="0000" onblur="removeWarning(this, 'clubNumber_mandatory_input')">
                     <span id="clubNumber_mandatory_input"> Sorry, this is a mandatory field </span>
+                    <span id="clubNumber_4_digits"> Please enter 4 digits only </span>
                 </div>
 
                 <div class="field">
                     <label for="postalAddress"> Postal Address <sup>*</sup> </label>
-                    <input type="text" name="postalAddress" id="postalAddress" placeholder="street/house number, suburb, state">
+                    <input type="text" name="postalAddress" id="postalAddress" placeholder="11 Station Street" onblur="removeWarning(this, 'postalAddress_mandatory_input')">
                     <span id="postalAddress_mandatory_input"> Sorry, this is a mandatory field </span>
+                    <span id="postalAddress_streetNumber_streetName"> Please enter a street number followed by street name </span>
                 </div>
 
                 <div class="field">
                     <label for="postCode"> Post Code <sup>*</sup> </label>
-                    <input type="text" name="postCode" id="postCode" placeholder="0000">
+                    <input type="text" name="postCode" id="postCode" placeholder="0000" onblur="removeWarning(this, 'postCode_mandatory_input')">
                     <span id="postCode_mandatory_input"> Sorry, this is a mandatory field </span>
+                    <span id="postCode_4_digits"> Please enter 4 digits only </span>
                 </div>
 
                 <div class="field">
                     <label for="contactName"> Contact Name <sup>*</sup> </label>
-                    <input type="text" name="contactName" id="contactName" placeholder="Full Name">
+                    <input type="text" name="contactName" id="contactName" placeholder="Full Name" onblur="removeWarning(this, 'contactName_mandatory_input')">
                     <span id="contactName_mandatory_input"> Sorry, this is a mandatory field </span>
+                    <span id="contactName_fullName"> Please enter full name with no digits </span>
                 </div>
 
                 <div class="field">
                     <label for="contactPhone"> Contact Phone <sup>*</sup> </label>
-                    <input type="text" name="contactPhone" id="contactPhone" placeholder="0400 000 000">
+                    <input type="text" name="contactPhone" id="contactPhone" placeholder="0400 000 000" onblur="removeWarning(this, 'contactPhone_mandatory_input')">
                     <span id="contactPhone_mandatory_input"> Sorry, this is a mandatory field </span>
+                    <span id="contactPhone_format"> Please enter in this format: 0400 000 000 </span>
                 </div>
 
                 <p> Please complete lines marked with this sign <sup>*</sup> </p>
@@ -206,20 +217,32 @@
                 <br>
                 <br>
 
+
+
             <div class="down">
                 <span id="radio-span"> Please select a payment method from below </span> <br>
                 <label > Payment Method: </label> <br>
-                <input type="radio" name="paymentMethod" id="cheque" onclick="hideCard()">
-                <label for="cheque"> Cheque </label>
 
-                <input type="radio" name="paymentMethod" id="moneyOrder" onclick="hideCard()">
-                <label for="moneyOrder"> Money Order </label>
+                <div class="radioField">
+                    <input type="radio" name="paymentMethod" id="cheque" onclick="hideCard('radio-span')">
+                    <label for="cheque"> Cheque </label>
+                </div>
 
-                <input type="radio" name="paymentMethod" id="directDeposit" onclick="changeCard()" value="cardPayment">
-                <label for="directDeposit"> Direct Deposit </label>
+                <div class="radioField">
+                    <input type="radio" name="paymentMethod" id="moneyOrder" onclick="hideCard('radio-span')">
+                    <label for="moneyOrder"> Money Order </label>
+                </div>
 
-                <input type="radio" name="paymentMethod" id="creditCard" onclick="changeCard()" value="cardPayment">
-                <label for="creditCard"> Credit Card </label>
+                <div class="radioField">
+                    <input type="radio" name="paymentMethod" id="directDeposit" onclick="changeCard('radio-span')" value="cardPayment">
+                    <label for="directDeposit"> Direct Deposit </label>
+                </div>
+
+                <div class="radioField">
+                    <input type="radio" name="paymentMethod" id="creditCard" onclick="changeCard('radio-span')" value="cardPayment">
+                    <label for="creditCard"> Credit Card </label>
+                </div>
+
                 <br>
                 <br>
                 <br>
@@ -276,34 +299,41 @@
                     <span id="radio-span-card"> Please select a card from below </span> <br>
                     <label> Charge my </label>
                     <div class="">
-                        <input type="radio" name="cardRadio" value="visa" id="visa">
+                        <input type="radio" name="cardRadio" value="visa" id="visa" onclick="onlyRemove('radio-span-card')">
                         <label for="visa"> Visa </label>
 
-                        <input type="radio" name="cardRadio" value="mastercard" id="mastercard">
+                        <input type="radio" name="cardRadio" value="mastercard" id="mastercard" onclick="onlyRemove('radio-span-card')">
                         <label for="mastercard"> Mastercard </label>
                     </div>
                     <br>
 
+
                     <div class="field">
                         <label for="cardNumber"> Credit Card Number </label>
-                        <input type="text" name="cardNumber" value="" id="cardNumber">
+                        <input type="text" name="cardNumber" value="" id="cardNumber" placeholder="0000 0000 0000 0000" onblur="cardValidation(this, 'cardNumber_mandatory', 'cardNumber_16_digits')">
+                        <span id="cardNumber_mandatory"> Sorry, this field is mandatory </span>
+                        <span id="cardNumber_16_digits"> Only numbers in this format 0000 0000 0000 0000 </span>
                     </div>
 
                     <div class="field">
                         <label for="cvv"> CVV </label>
-                        <input type="text" name="cvv" value="" id="cvv" id="cvv" placeholder="Last 3 digits on the back of the card">
+                        <input type="text" name="cvv" value="" id="cvv" id="cvv" placeholder="Last 3 digits on the back of the card" onblur="cardValidation(this, 'cardCVV_mandatory', 'cvv_3_digits')">
+                        <span id="cardCVV_mandatory"> Sorry, this is a mandatory field </span>
+                        <span id="cvv_3_digits"> Only numbers in this format 000 </span>
                     </div>
 
 
                     <div class="field">
                         <label for="cardHolderName"> Card Holder Name </label>
-                        <input type="text" name="cardHolderName" value="" id="cardHolderName" placeholder="Full Name of Card Holder">
+                        <input type="text" name="cardHolderName" value="" id="cardHolderName" placeholder="Full Name of Card Holder" onblur="cardValidation(this, 'cardHolderName_mandatory', 'full_name_span')">
+                        <span id="cardHolderName_mandatory"> Sorry, this is a mandatory field </span>
+                        <span id="full_name_span"> Please enter full name with no digits </span>
                     </div>
 
 
                     <div class="field">
                         <label for="amount"> Authorised amount </label>
-                        <input type="text" name="amount" value="" id="amount" placeholder="$0.00">
+                        <input type="text" name="amount" value="" id="amount" placeholder="$0.00" readonly>
                     </div>
 
 
@@ -312,6 +342,7 @@
                         <input type="date" name="expiryDate" value="" id="expiryDate">
                     </div>
                 </div>
+
                 <br>
                 <br>
 

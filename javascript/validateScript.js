@@ -39,6 +39,7 @@ function validateForm(form) {
 
 
     // checking radio buttons
+    console.log(form.paymentMethod.value.length);
     if (!form.paymentMethod.value.length) {
         valid = false;
         document.getElementById("radio-span").style.display = "inline-block";
@@ -52,20 +53,112 @@ function validateForm(form) {
     }
 
 
-
-
     if (!valid) {
         document.getElementById("no-submission").style.display = "inline-block";
     }
     return valid;
 }
 
-function changeCard() {
+function changeCard(id) {
+    document.getElementById(id).style.display = "none";
     document.getElementById("isCard").style.display = "inline-block";
 }
 
-function hideCard() {
+function onlyRemove(id) {
+    document.getElementById(id).style.display = "none";
+}
+
+function updateCardAmount(finalTotal) {
+
+    document.getElementById("amount").value = finalTotal.toFixed(2).toString();
+
+}
+
+function hideCard(id) {
+    document.getElementById(id).style.display = "none";
     document.getElementById("isCard").style.display = "none";
+}
+
+function cardValidation(element, id_1, id_2) {
+    document.getElementById(id_1).style.display = "none";
+
+    if (element.id == "cardNumber") {
+        let regEx = /[0-9]{4}[" "]{1}[0-9]{4}[" "]{1}[0-9]{4}[" "]{1}[0-9]{4}/;
+        showWarning(element, id_1, id_2, regEx);
+    }
+    if (element.id == "cvv") {
+        let regEx = /[0-9]{3}/;
+        showWarning(element, id_1, id_2, regEx);
+    }
+    if (element.id == "cardHolderName") {
+        let regEx = /[a-z A-Z]{1,30}/i ;
+        showWarning(element, id_1, id_2, regEx);
+    }
+
+}
+
+function showWarning(element, firstID, secondID, regEx) {
+    let formString = element.value;
+
+    if (!element.value.length) {
+        document.getElementById(secondID).style.display = "none";
+        document.getElementById(firstID).style.display = "inline-block";
+    }
+    else if (regEx.test(formString)) {
+        document.getElementById(secondID).style.display = "none";
+    }
+    else {
+        document.getElementById(firstID).style.display = "none";
+        document.getElementById(secondID).style.display = "inline-block";
+    }
+
+}
+
+function removeWarning(element, id) {
+    document.getElementById(id).style.display = "none";
+
+    // validation for clubName
+    if (id == 'clubName_mandatory_input') {
+        let regEx = /[a-z A-Z]{1,30}/i ;
+        showWarning(element, id, "clubName_alphabets_only", regEx);
+
+    }
+
+    // validation for Club Number
+    if (id == "clubNumber_mandatory_input") {
+        let formString = element.value;
+        let regEx = /[0-9]{4}/;
+        showWarning(element, "clubNumber_mandatory_input", "clubNumber_4_digits", regEx);
+
+    }
+
+    // validation for Postal Address
+    if (id == "postalAddress_mandatory_input") {
+        let regEx = /\w+(\s\w+){2,}/ ; // postalAddress_streetNumber_streetName
+        showWarning(element, "postalAddress_mandatory_input", "postalAddress_streetNumber_streetName", regEx);
+
+    }
+
+    // validation for Post Code
+    if (id == "postCode_mandatory_input") {
+        let regEx = /[0-9]{4}/ ;
+        showWarning(element, "postCode_mandatory_input", "postCode_4_digits", regEx);
+
+    }
+
+    // validation for Contact Name
+    if (id == "contactName_mandatory_input") {
+        // regex obtained from: https://stackoverflow.com/questions/46664142/js-regular-expression-for-first-name (answered by Wiktor Stribiżew)
+        let regEx = /^(?=.{1,50}$)[a-z]+(?:['_.\s][a-z]+)*$/ ;
+        showWarning(element, "contactName_mandatory_input", "contactName_fullName", regEx);
+
+    }
+
+    // validation for Contact Phone
+    if (id == "contactPhone_mandatory_input") {
+        let regEx = /[0-9]{4}[" "]{1}[0-9]{3}[" "][0-9]{3}/;
+        showWarning(element, "contactPhone_mandatory_input", "contactPhone_format", regEx);
+    }
 }
 
 function update(element) {
@@ -141,13 +234,13 @@ function update(element) {
     }
     else if (count_A + count_B + count_C <= 4) {
         postage = 4.00;
-        document.getElementById("oneBox").value = postage.toString();
+        document.getElementById("oneBox").value = postage.toFixed(2).toString();
 
         document.getElementById("twoBox").value = "0";
     }
     else {
         postage = 8.00;
-        document.getElementById("twoBox").value = postage.toString();
+        document.getElementById("twoBox").value = postage.toFixed(2).toString();
 
         document.getElementById("oneBox").value = "0";
     }
@@ -162,4 +255,5 @@ function update(element) {
     let finalTotal = total + (total * 0.025);
     document.getElementById("total").value = finalTotal.toFixed(2).toString();
 
+    updateCardAmount(finalTotal);
 }
